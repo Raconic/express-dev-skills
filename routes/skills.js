@@ -1,19 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
-var skillsCtrl = require('../controllers/skills')
-// All routes start with the path of '/todos'
 
-// GET /todos (index functionality - list all todos)
-router.get('/', skillsCtrl.index);
-// GET /skills/new
-router.get('/new', skillsCtrl.new);
-// GET /skills/:id (show functionality - show a single todo)
-router.get('/:id', skillsCtrl.show);
-// POST /skills
-router.post('/', skillsCtrl.create);
-// DELETE /skills/:id
-router.delete('/:id', skillsCtrl.delete);
-// PUT / skills
-router.put('/:id', skillsCtrl.update);
+ // All actual paths start with "/todos"
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
+
 module.exports = router;
+
+var skillsCtrl = require('../controllers/skills');
+
+router.get('/', skillsCtrl.index);
+
+router.get('/new', skillsCtrl.new);
+
+router.get('/:id', skillsCtrl.show);
+
+router.post('/', skillsCtrl.create);
+
+router.delete('/:id', skillsCtrl.delete);
+
+router.get('/:id/edit', skillsCtrl.edit);
+
+router.put('/:id', skillsCtrl.update);
